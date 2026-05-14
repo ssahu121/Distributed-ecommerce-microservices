@@ -40,6 +40,7 @@ The project follows microservices architecture and event-driven communication.
 | Eureka Server   | 8761 |
 | API Gateway     | 8080 |
 | Product Service | 8081 |
+| user-service    | 8082 |
 
 ---
 
