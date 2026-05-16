@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class ProductController {
 
     @GetMapping("/test")
     public String test() {
-        return "Product Service Running  ok hai";
+        return "Product Service Running  is ok";
     }
 }
