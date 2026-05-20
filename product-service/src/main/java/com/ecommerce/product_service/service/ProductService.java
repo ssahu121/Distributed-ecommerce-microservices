@@ -33,4 +33,9 @@ public class ProductService {
         repository.deleteById(id);
         return "Product Deleted Successfully";
     }
+
+    // Search Products By Name
+    public List<Product> searchProducts(String name) {
+        return repository.findByNameContainingIgnoreCase(name);
+    }
 }
