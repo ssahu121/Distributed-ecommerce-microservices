@@ -10,4 +10,6 @@ public class NotificationRequest {
     private String subject;
 
     private String message;
+
+    private String status;
 }
