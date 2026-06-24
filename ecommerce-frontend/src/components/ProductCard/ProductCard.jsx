@@ -1,8 +1,8 @@
-import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function ProductCard({ title, price, image }) {
+function ProductCard({ id, title, price, image }) {
   return (
-    <div className="card border-0 shadow-sm h-100">
+    <div className="card h-100 shadow-sm">
 
       <img
         src={image}
@@ -16,29 +16,16 @@ function ProductCard({ title, price, image }) {
 
       <div className="card-body">
 
-        <h6 className="card-title">
-          {title}
-        </h6>
+        <h6>{title.substring(0, 40)}...</h6>
 
-        <div className="mb-2 text-warning">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-        </div>
+        <h5 className="text-success">₹{price}</h5>
 
-        <h5 className="text-success">
-          ₹{price}
-        </h5>
-
-        <button className="btn btn-warning w-100 mb-2">
-          Add To Cart
-        </button>
-
-        <button className="btn btn-dark w-100">
-          Buy Now
-        </button>
+        <Link
+          to={`/product/${id}`}
+          className="btn btn-dark w-100"
+        >
+          View Details
+        </Link>
 
       </div>
 

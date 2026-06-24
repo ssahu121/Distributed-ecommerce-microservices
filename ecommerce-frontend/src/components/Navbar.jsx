@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <>
       {/* Top Navbar */}
@@ -30,7 +34,7 @@ function Navbar() {
           <Link className="btn btn-light position-relative" to="/cart">
             <FaShoppingCart />
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              0
+              {cartItems.length}
             </span>
           </Link>
         </div>
@@ -39,6 +43,11 @@ function Navbar() {
       {/* Category Navbar */}
       <div className="bg-primary text-white py-2">
         <div className="container d-flex justify-content-center gap-5">
+
+           <Link className="text-white text-decoration-none" to="/">
+            Home
+          </Link>
+          
           <Link className="text-white text-decoration-none" to="/">
             Electronics
           </Link>
@@ -49,10 +58,6 @@ function Navbar() {
 
           <Link className="text-white text-decoration-none" to="/">
             Mobiles
-          </Link>
-
-          <Link className="text-white text-decoration-none" to="/">
-            Home
           </Link>
 
           <Link className="text-white text-decoration-none" to="/">

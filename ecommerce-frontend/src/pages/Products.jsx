@@ -1,18 +1,39 @@
-import Navbar from "../components/Navbar";
-import FeaturedProducts from "../components/FeaturedProducts/FeaturedProducts";
+
+import Layout from "../components/Layout/Layout";
 
 function Products() {
   return (
-    <>
-      <Navbar />
-
-      <div className="container mt-4">
-        <h2>All Products</h2>
-      </div>
-
+    <Layout>
       <FeaturedProducts />
-    </>
+    </Layout>
+  );
+}
+function FeaturedProducts() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    api.get("/products")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div className="container my-5">
+      <h2>Featured Products</h2>
+
+      <div className="row">
+        {products.map((product) => (
+          <div className="col-md-3 mb-4" key={product.id}>
+            <ProductCard
+              title={product.title}
+              price={product.price}
+              image={product.image}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
-export default Products;
+export default FeaturedProducts;
