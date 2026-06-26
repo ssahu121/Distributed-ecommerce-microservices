@@ -1,26 +1,20 @@
 package com.ecommerce.user_service.controller;
 
-import com.ecommerce.user_service.model.User;
+import com.ecommerce.user_service.dto.AuthResponse;
+import com.ecommerce.user_service.dto.RegisterRequest;
 import com.ecommerce.user_service.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService service;
+    private final UserService userService;
 
-    @PostMapping
-    public User create(@RequestBody User user) {
-        return service.saveUser(user);
-    }
-
-    @GetMapping
-    public List<User> getAll() {
-        return service.getAllUsers();
+    @PostMapping("/register")
+    public AuthResponse register(@RequestBody RegisterRequest request) {
+        return userService.register(request);
     }
 }

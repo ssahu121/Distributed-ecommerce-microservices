@@ -1,23 +1,12 @@
 package com.ecommerce.user_service.service;
 
-import com.ecommerce.user_service.model.User;
-import com.ecommerce.user_service.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.ecommerce.user_service.dto.AuthResponse;
+import com.ecommerce.user_service.dto.LoginRequest;
+import com.ecommerce.user_service.dto.RegisterRequest;
 
-import java.util.List;
+public interface UserService {
 
-@Service
-public class UserService {
+    AuthResponse register(RegisterRequest request);
 
-    @Autowired
-    private UserRepository repo;
-
-    public User saveUser(User user) {
-        return repo.save(user);
-    }
-
-    public List<User> getAllUsers() {
-        return repo.findAll();
-    }
+    AuthResponse login(LoginRequest request);
 }
