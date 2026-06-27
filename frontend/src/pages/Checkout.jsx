@@ -1,9 +1,10 @@
+import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Checkout.css";
 
 function Checkout() {
-  const { cart, clearCart } = useCart();
+  const { cart, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -12,10 +13,7 @@ function Checkout() {
     phone: "",
   });
 
-  const total = cart.reduce(
-    (acc, item) => acc + item.price * item.qty,
-    0
-  );
+  const [payment, setPayment] = useState("upi");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,35 +25,120 @@ function Checkout() {
       return;
     }
 
+    const order = {
+      id: Date.now(),
+      items: cart,
+      total: totalPrice,
+      payment,
+      customer: form,
+      date: new Date().toLocaleString(),
+    };
+
+    const old = JSON.parse(localStorage.getItem("orders")) || [];
+    localStorage.setItem("orders", JSON.stringify([...old, order]));
+
     clearCart();
     navigate("/success");
   };
 
   return (
-    <div className="checkout">
-      <h2>Checkout</h2>
+    
+    <div className="checkout-bg">
 
-      <input
-        name="name"
-        placeholder="Name"
-        onChange={handleChange}
-      />
-      <input
-        name="address"
-        placeholder="Address"
-        onChange={handleChange}
-      />
-      <input
-        name="phone"
-        placeholder="Phone"
-        onChange={handleChange}
-      />
+      <h1 className="title">Secure Checkout</h1>
 
-      <h3>Total: ₹{total}</h3>
+      <div className="checkout-container">
 
-      <button onClick={handleOrder}>
-        Place Order
-      </button>
+        {/* LEFT SIDE */}
+        <div className="card left">
+
+          <h2>Delivery Details</h2>
+
+          <input name="name" placeholder="Full Name" onChange={handleChange} />
+          <input name="address" placeholder="Full Address" onChange={handleChange} />
+          <input name="phone" placeholder="Phone Number" onChange={handleChange} />
+
+          <h3>Payment Method</h3>
+
+          <div className="payment-box">
+
+            <label>
+              <input type="radio" checked={payment === "upi"} onChange={() => setPayment("upi")} />
+              UPI / QR Scan
+            </label>
+
+            <label>
+              <input type="radio" checked={payment === "card"} onChange={() => setPayment("card")} />
+              Card
+            </label>
+
+            <label>
+              <input type="radio" checked={payment === "cod"} onChange={() => setPayment("cod")} />
+              Cash on Delivery
+            </label>
+
+          </div>
+
+          {/* UPI QR */}
+          {payment === "upi" && (
+            <div className="qr-box">
+              <h4>Scan & Pay</h4>
+
+              {/* 🔥 PLACEHOLDER QR (you will replace later) */}
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=UPI_PAYMENT"
+                alt="QR Code"
+              />
+
+              <p>Scan using any UPI app (PhonePe, GPay, Paytm)</p>
+            </div>
+          )}
+
+          {/* CARD */}
+          {payment === "card" && (
+            <div className="card-box">
+              <input placeholder="Card Number" />
+              <input placeholder="MM/YY" />
+              <input placeholder="CVV" />
+            </div>
+          )}
+
+          {/* COD */}
+          {payment === "cod" && (
+            <div className="cod">
+              You will pay after delivery 🚚
+            </div>
+          )}
+
+          <button className="pay-btn" onClick={handleOrder}>
+            Place Order ₹{totalPrice}
+          </button>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="card right">
+
+          <h2>Order Summary</h2>
+
+          <div className="items">
+            {cart.map((item) => (
+              <div className="item" key={item.id}>
+                <span>{item.name}</span>
+                <span>₹{item.price} × {item.quantity}</span>
+              </div>
+            ))}
+          </div>
+
+          <hr />
+
+          <div className="total">
+            <h2>Total: ₹{totalPrice}</h2>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   );
 }

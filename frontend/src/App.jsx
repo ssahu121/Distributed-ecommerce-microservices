@@ -13,6 +13,8 @@ import { CartProvider } from "./context/CartContext";
 import { SearchProvider } from "./context/SearchContext";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
+import OrderHistory from "./pages/OrderHistory";
+import ProtectedRoute from "./routes/ProtectedRoute";
 function App() {
   return (
     <CartProvider>
@@ -30,6 +32,8 @@ function App() {
                 <Route path="product/:id" element={<ProductDetails />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="success" element={<Success />} />
+                <Route path="orders" element={<OrderHistory />} />
+                
               </Route>
             </Routes>
           </BrowserRouter>

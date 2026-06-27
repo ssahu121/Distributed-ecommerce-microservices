@@ -1,9 +1,16 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem("cart");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product) => {
     setCart((prev) => {
@@ -15,16 +22,11 @@ export function CartProvider({ children }) {
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
-      } else {
-        return [...prev, { ...product, quantity: 1 }];
       }
+
+      return [...prev, { ...product, quantity: 1 }];
     });
   };
-
-  const cartCount = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
@@ -40,17 +42,24 @@ export function CartProvider({ children }) {
     );
   };
 
- const decreaseQty = (id) => {
-  setCart((prev) =>
-    prev
-      .map((item) =>
-        item.id === id
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-      .filter((item) => item.quantity > 0)
+  const decreaseQty = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
+  const clearCart = () => setCart([]);
+
+  const cartCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
   );
-};
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -65,8 +74,9 @@ export function CartProvider({ children }) {
         removeFromCart,
         increaseQty,
         decreaseQty,
+        clearCart,
+        cartCount,
         totalPrice,
-        cartCount, // 🔥 IMPORTANT
       }}
     >
       {children}

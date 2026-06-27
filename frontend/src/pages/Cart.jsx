@@ -1,7 +1,11 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import "./Cart.css";
 
 function Cart() {
+  const navigate = useNavigate();
+
   const {
     cart,
     increaseQty,
@@ -14,91 +18,77 @@ function Cart() {
   const finalAmount = totalPrice + deliveryCharge;
 
   return (
-    <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
+    <div className="cart-page">
 
-      {/* LEFT SIDE - CART ITEMS */}
-      <div style={{ flex: 2 }}>
+      {/* LEFT SIDE */}
+      <div className="cart-left">
 
-        <h2>Your Cart 🛒</h2>
+        <h2 className="title">🛒 My Cart</h2>
 
         {cart.length === 0 ? (
-          <h3>Cart is Empty</h3>
+          <div className="empty">
+            <h3>Your cart is empty 😢</h3>
+          </div>
         ) : (
           cart.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                gap: "15px",
-                padding: "10px",
-                marginBottom: "10px",
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                style={{ width: "80px", height: "80px", objectFit: "contain" }}
-              />
+            <div className="cart-card" key={item.id}>
 
-              <div style={{ flex: 1 }}>
+              <img src={item.image} alt={item.name} />
+
+              <div className="cart-info">
                 <h4>{item.name}</h4>
-                <p>₹{item.price}</p>
+                <p className="price">₹{item.price}</p>
 
-                <div>
+                <div className="qty-box">
                   <button onClick={() => decreaseQty(item.id)}>-</button>
-                  <span style={{ margin: "0 10px" }}>{item.quantity}</span>
+                  <span>{item.quantity}</span>
                   <button onClick={() => increaseQty(item.id)}>+</button>
                 </div>
 
-                <button onClick={() => removeFromCart(item.id)}>
+                <button
+                  className="remove"
+                  onClick={() => removeFromCart(item.id)}
+                >
                   Remove
                 </button>
               </div>
+
             </div>
           ))
         )}
       </div>
 
       {/* RIGHT SIDE - BILL */}
-      <div
-        style={{
-          flex: 1,
-          border: "1px solid #ddd",
-          padding: "20px",
-          borderRadius: "10px",
-          height: "fit-content",
-          position: "sticky",
-          top: "20px",
-          background: "#fff",
-        }}
-      >
+      <div className="cart-right">
+
         <h3>PRICE DETAILS</h3>
-        <hr />
 
-        <p>Price ({cart.length} items): ₹{totalPrice}</p>
-        <p>Delivery Charges: ₹{deliveryCharge}</p>
+        <div className="bill">
+          <div>
+            <span>Price ({cart.length} items)</span>
+            <span>₹{totalPrice}</span>
+          </div>
 
-        <hr />
+          <div>
+            <span>Delivery Charges</span>
+            <span>₹{deliveryCharge}</span>
+          </div>
 
-        <h2>Total Amount: ₹{finalAmount}</h2>
+          <hr />
+
+          <div className="total">
+            <span>Total Amount</span>
+            <span>₹{finalAmount}</span>
+          </div>
+        </div>
 
         <button
-          style={{
-            width: "100%",
-            padding: "12px",
-            background: "#2874f0",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            marginTop: "10px",
-            cursor: "pointer",
-          }}
+          className="checkout-btn"
+          onClick={() => navigate("/checkout")}
         >
-          Proceed to Payment
+          Proceed to Checkout
         </button>
+
       </div>
 
     </div>

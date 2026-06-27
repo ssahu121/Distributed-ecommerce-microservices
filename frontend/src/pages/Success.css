@@ -1,0 +1,86 @@
+.success-bg {
+  min-height: 100vh;
+  background: #f1f3f6;
+  padding: 30px;
+  text-align: center;
+  font-family: Arial;
+}
+
+/* MAIN CARD */
+.success-card {
+  background: white;
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.check {
+  width: 60px;
+  height: 60px;
+  background: #28a745;
+  color: white;
+  font-size: 30px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.success-card h1 {
+  font-size: 22px;
+}
+
+.success-card p {
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #2874f0;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* RECOMMENDED */
+.rec-title {
+  margin-top: 40px;
+}
+
+.rec-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.rec-card {
+  background: white;
+  padding: 15px;
+  width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.rec-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.rec-card button {
+  margin-top: 8px;
+  padding: 6px;
+  width: 100%;
+  border: none;
+  background: #ff9f00;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}

@@ -58,6 +58,12 @@ function Navbar() {
                 Products
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/orders">
+                My Orders
+              </Link>
+            </li>
             {/* AUTH BUTTONS */}
             <div className="auth-buttons">
               <Link to="/login" className="login-btn">

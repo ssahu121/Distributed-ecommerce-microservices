@@ -8,7 +8,6 @@ import { useFilter } from "../context/FilterContext";
 
 import "./Products.css";
 
-
 function Products() {
 
   const { search } = useSearch();
