@@ -1,33 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import products from "../data/products";
+import ProductCard from "../components/ProductCard/ProductCard";
+import Sidebar from "../components/Sidebar/Sidebar";
+
+import { useSearch } from "../context/SearchContext";
+import { useFilter } from "../context/FilterContext";
+
+import "./Products.css";
+
 
 function Products() {
+
+  const { search } = useSearch();
+  const { category } = useFilter();
+
+  let filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  if (category !== "all") {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === category
+    );
+  }
+
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Products</h1>
+    <div className="products-layout">
 
-      <div
-        style={{
-          width: "250px",
-          border: "1px solid #ccc",
-          borderRadius: "10px",
-          padding: "20px",
-        }}
-      >
-        <img
-          src="https://via.placeholder.com/200"
-          alt="Product"
-          style={{ width: "100%" }}
-        />
+      <Sidebar />
 
-        <h3>iPhone 16</h3>
+      <div className="products-content">
 
-        <p>₹79,999</p>
+        <h2>All Products</h2>
 
-        <Link to="/product/1">
-          <button>View Details</button>
-        </Link>
+        <p>{filteredProducts.length} Products Found</p>
+
+        <div className="products-grid">
+
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
+
+        </div>
+
       </div>
+
     </div>
   );
 }

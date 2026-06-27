@@ -40,18 +40,17 @@ export function CartProvider({ children }) {
     );
   };
 
-  const decreaseQty = (id) => {
-    setCart((prev) =>
-      prev.map((item) =>
+ const decreaseQty = (id) => {
+  setCart((prev) =>
+    prev
+      .map((item) =>
         item.id === id
-          ? {
-              ...item,
-              quantity: item.quantity > 1 ? item.quantity - 1 : 1,
-            }
+          ? { ...item, quantity: item.quantity - 1 }
           : item
       )
-    );
-  };
+      .filter((item) => item.quantity > 0)
+  );
+};
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,

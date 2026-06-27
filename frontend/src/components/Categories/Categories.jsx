@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaMobileAlt,
   FaLaptop,
@@ -9,38 +10,54 @@ import {
   FaClock,
   FaGamepad,
 } from "react-icons/fa";
+
 import "./Categories.css";
 
 function Categories() {
   const categories = [
-    { name: "Mobiles", icon: <FaMobileAlt /> },
-    { name: "Laptops", icon: <FaLaptop /> },
-    { name: "Fashion", icon: <FaTshirt /> },
-    { name: "Beauty", icon: <FaHeart /> },
-    { name: "Electronics", icon: <FaTv /> },
-    { name: "Home", icon: <FaHome /> },
-    { name: "Watches", icon: <FaClock /> },
-    { name: "Gaming", icon: <FaGamepad /> },
+    { name: "Mobiles", value: "mobile", icon: <FaMobileAlt /> },
+    { name: "Laptops", value: "laptop", icon: <FaLaptop /> },
+    { name: "Fashion", value: "fashion", icon: <FaTshirt /> },
+    { name: "Beauty", value: "beauty", icon: <FaHeart /> },
+    { name: "Electronics", value: "tv", icon: <FaTv /> },
+    { name: "Home", value: "home", icon: <FaHome /> },
+    { name: "Watches", value: "watch", icon: <FaClock /> },
+    { name: "Gaming", value: "gaming", icon: <FaGamepad /> },
   ];
 
   return (
     <section className="categories">
       <div className="container">
-        <h2 className="category-heading">Shop by Category</h2>
+
+        <h2 className="category-heading">
+          Shop by Category
+        </h2>
 
         <div className="row g-4 justify-content-center">
+
           {categories.map((item, index) => (
-            <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={index}>
-              <div className="category-card">
-                <div className="icon-circle">{item.icon}</div>
+            <div
+              className="col-6 col-sm-4 col-md-3 col-lg-2"
+              key={index}
+            >
+              <Link
+                to={`/products?category=${item.value}`}
+                className="category-card"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div className="icon-circle">
+                  {item.icon}
+                </div>
 
                 <h6>{item.name}</h6>
 
                 <small>Explore</small>
-              </div>
+              </Link>
             </div>
           ))}
+
         </div>
+
       </div>
     </section>
   );

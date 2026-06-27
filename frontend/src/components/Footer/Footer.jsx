@@ -1,51 +1,99 @@
-import React from "react";
 import "./Footer.css";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 
 function Footer() {
   return (
     <footer className="footer">
-      
-      <div className="footer-container">
 
-        {/* Brand */}
+      <div className="footer-top">
+
         <div className="footer-box">
-          <h2 className="logo">ShopX</h2>
+          <h2 className="footer-logo">ShopEase</h2>
           <p>
-            Your one-stop destination for mobiles, gadgets,
-            fashion & lifestyle products at best prices.
+            ShopEase is your one-stop destination for Electronics, Fashion,
+            Beauty, Home Appliances and much more. Quality products at the best
+            prices with fast delivery.
           </p>
+
+          <div className="social-icons">
+            <a href="#"><FaFacebookF /></a>
+            <a href="#"><FaInstagram /></a>
+            <a href="#"><FaTwitter /></a>
+            <a href="#"><FaLinkedinIn /></a>
+            <a href="#"><FaYoutube /></a>
+          </div>
         </div>
 
-        {/* Links */}
         <div className="footer-box">
-          <h3>Quick Links</h3>
+          <h4>Quick Links</h4>
+
           <a href="/">Home</a>
           <a href="/products">Products</a>
           <a href="/cart">Cart</a>
           <a href="/login">Login</a>
+          <a href="/signup">Signup</a>
         </div>
 
-        {/* Support */}
         <div className="footer-box">
-          <h3>Support</h3>
-          <a href="#">Contact Us</a>
+          <h4>Categories</h4>
+
+          <a href="#">Mobiles</a>
+          <a href="#">Laptops</a>
+          <a href="#">Fashion</a>
+          <a href="#">Beauty</a>
+          <a href="#">Electronics</a>
+        </div>
+
+        <div className="footer-box">
+          <h4>Customer Support</h4>
+
           <a href="#">Help Center</a>
-          <a href="#">Shipping Info</a>
+          <a href="#">Shipping</a>
           <a href="#">Returns</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
         </div>
 
-        {/* Contact */}
         <div className="footer-box">
-          <h3>Contact</h3>
-          <p>Email: support@shopx.com</p>
-          <p>Phone: +91 98765 43210</p>
-          <p>India</p>
+          <h4>Contact Us</h4>
+
+          <p><FaMapMarkerAlt /> Noida, Uttar Pradesh, India</p>
+          <p><FaPhoneAlt /> +91 9876543210</p>
+          <p><FaEnvelope /> support@shopease.com</p>
+
+          <div className="newsletter">
+            <input
+              type="email"
+              placeholder="Enter your email"
+            />
+            <button>Subscribe</button>
+          </div>
+
         </div>
 
       </div>
 
+      <hr />
+
       <div className="footer-bottom">
-        © {new Date().getFullYear()} ShopX. All Rights Reserved.
+
+        <p>
+          © 2026 <strong>ShopEase</strong>. All Rights Reserved.
+        </p>
+
+        <p>
+          Designed with ❤️ using React & Bootstrap
+        </p>
+
       </div>
 
     </footer>

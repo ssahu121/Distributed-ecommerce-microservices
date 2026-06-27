@@ -1,28 +1,82 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import products from "../data/products";
+import { useCart } from "../context/CartContext";
+import "./ProductDetails.css";
 
 function ProductDetails() {
+
+  const { id } = useParams();
+
+  const { addToCart } = useCart();
+
+  const product = products.find((item) => item.id === Number(id));
+
+  if (!product) {
+    return <h2 style={{ textAlign: "center" }}>Product Not Found</h2>;
+  }
+
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Product Details</h1>
+    <div className="details-container">
 
-      <img
-        src="https://via.placeholder.com/300"
-        alt="Product"
-      />
+      <div className="details-left">
 
-      <h2>iPhone 16</h2>
+        <img src={product.image} alt={product.name} />
 
-      <h3>₹79,999</h3>
+      </div>
 
-      <p>
-        Apple iPhone 16 with A18 Chip, Super Retina Display,
-        48MP Camera and Long Battery Life.
-      </p>
+      <div className="details-right">
 
-      <Link to="/cart">
-        <button>Add To Cart</button>
-      </Link>
+        <h2>{product.name}</h2>
+
+        <div className="rating">
+          ⭐ {product.rating}
+        </div>
+
+        <h1>₹{product.price}</h1>
+
+        <p className="old-price">
+          ₹{product.oldPrice}
+        </p>
+
+        <span className="discount">
+          {product.discount}
+        </span>
+
+        <hr />
+
+        <h4>Description</h4>
+
+        <p>
+          Premium quality product with excellent performance and
+          one year brand warranty. Fast delivery and easy returns.
+        </p>
+
+        <h4>Highlights</h4>
+
+        <ul>
+          <li>Original Brand Product</li>
+          <li>1 Year Warranty</li>
+          <li>Cash on Delivery Available</li>
+          <li>7 Days Easy Return</li>
+        </ul>
+
+        <div className="btn-group">
+
+          <button
+            className="add-btn"
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </button>
+
+          <button className="buy-btn">
+            Buy Now
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
   );
 }

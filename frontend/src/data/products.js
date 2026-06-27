@@ -1,5 +1,5 @@
 const products = [
-  // 📱 PHONES
+  // 📱 MOBILE
   {
     id: 1,
     name: "Apple iPhone 16 Pro Max",
@@ -30,10 +30,30 @@ const products = [
     discount: "6% OFF",
     category: "mobile",
   },
-
-  // 💻 LAPTOPS
   {
     id: 4,
+    name: "iPhone 15",
+    image: "https://images.unsplash.com/photo-1696446702879-8b7a6a6b1c7a?w=600",
+    price: 79999,
+    oldPrice: 89999,
+    rating: 4.8,
+    discount: "11% OFF",
+    category: "mobile",
+  },
+  {
+    id: 5,
+    name: "Samsung Galaxy S24",
+    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600",
+    price: 74999,
+    oldPrice: 84999,
+    rating: 4.7,
+    discount: "12% OFF",
+    category: "mobile",
+  },
+
+  // 💻 LAPTOP
+  {
+    id: 6,
     name: "MacBook Air M4",
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600",
     price: 114999,
@@ -43,7 +63,7 @@ const products = [
     category: "laptop",
   },
   {
-    id: 5,
+    id: 7,
     name: "Dell XPS 15",
     image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600",
     price: 99999,
@@ -52,10 +72,30 @@ const products = [
     discount: "9% OFF",
     category: "laptop",
   },
-
-  // 🎧 HEADPHONES
   {
-    id: 6,
+    id: 8,
+    name: "HP Pavilion Gaming Laptop",
+    image: "https://images.unsplash.com/photo-1593642634367-d91a135587b5?w=600",
+    price: 65999,
+    oldPrice: 72999,
+    rating: 4.5,
+    discount: "10% OFF",
+    category: "laptop",
+  },
+  {
+    id: 9,
+    name: "Lenovo Legion 5",
+    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600",
+    price: 84999,
+    oldPrice: 94999,
+    rating: 4.6,
+    discount: "11% OFF",
+    category: "laptop",
+  },
+
+  // 🎧 AUDIO
+  {
+    id: 10,
     name: "Sony WH-1000XM5",
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
     price: 24999,
@@ -65,7 +105,7 @@ const products = [
     category: "audio",
   },
   {
-    id: 7,
+    id: 11,
     name: "Boat Rockerz 650",
     image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600",
     price: 1999,
@@ -74,10 +114,30 @@ const products = [
     discount: "42% OFF",
     category: "audio",
   },
-
-  // 👟 SHOES
   {
-    id: 8,
+    id: 12,
+    name: "JBL Tune 760NC",
+    image: "https://images.unsplash.com/photo-1518441310591-859f2f0c3a0d?w=600",
+    price: 5999,
+    oldPrice: 7999,
+    rating: 4.4,
+    discount: "25% OFF",
+    category: "audio",
+  },
+  {
+    id: 13,
+    name: "Apple AirPods Pro 2",
+    image: "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600",
+    price: 24999,
+    oldPrice: 27999,
+    rating: 4.8,
+    discount: "10% OFF",
+    category: "audio",
+  },
+
+  // 👟 FASHION
+  {
+    id: 14,
     name: "Nike Air Max 270",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
     price: 8999,
@@ -87,7 +147,7 @@ const products = [
     category: "fashion",
   },
   {
-    id: 9,
+    id: 15,
     name: "Adidas Ultraboost",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600",
     price: 12999,
@@ -96,10 +156,30 @@ const products = [
     discount: "13% OFF",
     category: "fashion",
   },
-
-  // ⌚ WATCHES
   {
-    id: 10,
+    id: 16,
+    name: "Puma Running Shoes",
+    image: "https://images.unsplash.com/photo-1528701800489-20be3c1ea6f8?w=600",
+    price: 4999,
+    oldPrice: 6999,
+    rating: 4.5,
+    discount: "29% OFF",
+    category: "fashion",
+  },
+  {
+    id: 17,
+    name: "Levi’s Jeans",
+    image: "https://images.unsplash.com/photo-1520975922284-9c0c7a5b6a90?w=600",
+    price: 2999,
+    oldPrice: 3999,
+    rating: 4.6,
+    discount: "25% OFF",
+    category: "fashion",
+  },
+
+  // ⌚ WATCH
+  {
+    id: 18,
     name: "Apple Watch Series 10",
     image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600",
     price: 42999,
@@ -108,10 +188,20 @@ const products = [
     discount: "14% OFF",
     category: "watch",
   },
+  {
+    id: 19,
+    name: "Noise ColorFit Pro 5",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",
+    price: 2999,
+    oldPrice: 4999,
+    rating: 4.3,
+    discount: "40% OFF",
+    category: "watch",
+  },
 
   // 📺 TV
   {
-    id: 11,
+    id: 20,
     name: "Samsung 55 Inch 4K Smart TV",
     image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600",
     price: 45999,
@@ -120,10 +210,20 @@ const products = [
     discount: "13% OFF",
     category: "tv",
   },
+  {
+    id: 21,
+    name: "LG 4K Smart TV 43 Inch",
+    image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600",
+    price: 32999,
+    oldPrice: 38999,
+    rating: 4.6,
+    discount: "15% OFF",
+    category: "tv",
+  },
 
   // 💄 BEAUTY
   {
-    id: 12,
+    id: 22,
     name: "L'Oréal Paris Makeup Kit",
     image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",
     price: 2999,
@@ -132,32 +232,62 @@ const products = [
     discount: "25% OFF",
     category: "beauty",
   },
+  {
+    id: 23,
+    name: "Lakme Makeup Set",
+    image: "https://images.unsplash.com/photo-1596704017250-8f96a0c1a3e6?w=600",
+    price: 2499,
+    oldPrice: 3499,
+    rating: 4.5,
+    discount: "28% OFF",
+    category: "beauty",
+  },
 
-  // 🏠 HOME APPLIANCES
-  {
-    id: 13,
-    name: "Philips Air Fryer",
-    image: "https://images.unsplash.com/photo-1604908177522-040f3f1a1c3d?w=600",
-    price: 7999,
-    oldPrice: 9999,
-    rating: 4.6,
-    discount: "20% OFF",
-    category: "home",
-  },
-  {
-    id: 14,
-    name: "LG Washing Machine",
-    image: "https://images.unsplash.com/photo-1581579185169-1dcb8a2c9c08?w=600",
-    price: 28999,
-    oldPrice: 32999,
-    rating: 4.7,
-    discount: "12% OFF",
-    category: "home",
-  },
+  //home Appliciances
+{
+  id: 24,
+  name: "Philips Air Fryer",
+  image: "https://picsum.photos/id/292/600/400",
+  price: 7999,
+  oldPrice: 9999,
+  rating: 4.6,
+  discount: "20% OFF",
+  category: "home",
+},
+{
+  id: 25,
+  name: "Modern Kitchen Setup",
+  image: "https://picsum.photos/id/1080/600/400",
+  price: 12999,
+  oldPrice: 15999,
+  rating: 4.7,
+  discount: "18% OFF",
+  category: "home",
+},
+{
+  id: 26,
+  name: "Smart Home Lamp",
+  image: "https://picsum.photos/id/1060/600/400",
+  price: 1999,
+  oldPrice: 2999,
+  rating: 4.4,
+  discount: "33% OFF",
+  category: "home",
+},
+{
+  id: 27,
+  name: "Robot Vacuum Cleaner",
+  image: "https://picsum.photos/id/1069/600/400",
+  price: 18999,
+  oldPrice: 22999,
+  rating: 4.7,
+  discount: "17% OFF",
+  category: "home",
+},
 
   // 🎮 GAMING
   {
-    id: 15,
+    id: 26,
     name: "PlayStation 5",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600",
     price: 49999,
@@ -166,6 +296,26 @@ const products = [
     discount: "9% OFF",
     category: "gaming",
   },
+  {
+    id: 27,
+    name: "Xbox Series X",
+    image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=600",
+    price: 52999,
+    oldPrice: 57999,
+    rating: 4.8,
+    discount: "7% OFF",
+    category: "gaming",
+  },
+  {
+    id: 28,
+    name: "Gaming Chair RGB",
+    image: "https://images.unsplash.com/photo-1616627981435-98d0e5d1b7e6?w=600",
+    price: 14999,
+    oldPrice: 17999,
+    rating: 4.7,
+    discount: "16% OFF",
+    category: "gaming",
+  }
 ];
 
 export default products;
