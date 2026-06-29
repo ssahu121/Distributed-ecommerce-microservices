@@ -16,6 +16,10 @@ public class ProductService {
 
     // Save Product
     public Product saveProduct(Product product) {
+
+        System.out.println("Saving Product...");
+        System.out.println(product);
+
         return repository.save(product);
     }
 

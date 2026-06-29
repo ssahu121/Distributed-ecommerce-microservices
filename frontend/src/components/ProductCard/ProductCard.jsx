@@ -26,7 +26,7 @@ function ProductCard({ product }) {
       <Link to={`/product/${product.id}`} className="product-image">
         <img
           src={
-            product.image || "https://via.placeholder.com/250x250?text=No+Image"
+            product.image || "https://placehold.co/250x250/png?text=No+Image"
           }
           alt={product.name}
         />

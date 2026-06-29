@@ -22,7 +22,7 @@ public class Product {
     private int discount;
     private double rating;
     private int quantity;
-    private String image;
+    private String image = "https://placehold.co/250x250/png?text=No+Image";
     private String category;
 
     // ✅ Real Default Constructor

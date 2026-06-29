@@ -18,7 +18,7 @@ public class ProductController {
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
 
-        System.out.println("Controller Hit");
+        System.out.println("====== PRODUCT RECEIVED ======");
         System.out.println(product);
 
         return service.saveProduct(product);
