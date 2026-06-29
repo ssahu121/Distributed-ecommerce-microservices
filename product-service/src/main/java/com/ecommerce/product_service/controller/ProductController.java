@@ -17,6 +17,10 @@ public class ProductController {
 
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
+
+        System.out.println("Controller Hit");
+        System.out.println(product);
+
         return service.saveProduct(product);
     }
 
@@ -38,5 +42,13 @@ public class ProductController {
     @GetMapping("/search/{name}")
     public List<Product> searchProducts(@PathVariable String name) {
         return service.searchProducts(name);
+    }
+
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Long id,
+            @RequestBody Product product) {
+
+        return service.updateProduct(id, product);
+
     }
 }

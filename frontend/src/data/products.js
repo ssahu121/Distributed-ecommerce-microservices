@@ -286,36 +286,36 @@ const products = [
 },
 
   // 🎮 GAMING
-  {
-    id: 26,
-    name: "PlayStation 5",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600",
-    price: 49999,
-    oldPrice: 54999,
-    rating: 4.9,
-    discount: "9% OFF",
-    category: "gaming",
-  },
-  {
-    id: 27,
-    name: "Xbox Series X",
-    image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=600",
-    price: 52999,
-    oldPrice: 57999,
-    rating: 4.8,
-    discount: "7% OFF",
-    category: "gaming",
-  },
-  {
-    id: 28,
-    name: "Gaming Chair RGB",
-    image: "https://images.unsplash.com/photo-1616627981435-98d0e5d1b7e6?w=600",
-    price: 14999,
-    oldPrice: 17999,
-    rating: 4.7,
-    discount: "16% OFF",
-    category: "gaming",
-  }
+{
+  id: 28,
+  name: "PlayStation 5",
+  image: "...",
+  price: 49999,
+  oldPrice: 54999,
+  rating: 4.9,
+  discount: "9% OFF",
+  category: "gaming",
+},
+{
+  id: 29,
+  name: "Xbox Series X",
+  image: "...",
+  price: 52999,
+  oldPrice: 57999,
+  rating: 4.8,
+  discount: "7% OFF",
+  category: "gaming",
+},
+{
+  id: 30,
+  name: "Gaming Chair RGB",
+  image: "...",
+  price: 14999,
+  oldPrice: 17999,
+  rating: 4.7,
+  discount: "16% OFF",
+  category: "gaming",
+},
 ];
 
 export default products;

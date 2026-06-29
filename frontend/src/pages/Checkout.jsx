@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
-
+import myQR from "../assets/myqr.png";
 function Checkout() {
   const { cart, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
@@ -42,41 +42,55 @@ function Checkout() {
   };
 
   return (
-    
     <div className="checkout-bg">
-
       <h1 className="title">Secure Checkout</h1>
 
       <div className="checkout-container">
-
         {/* LEFT SIDE */}
         <div className="card left">
-
           <h2>Delivery Details</h2>
 
           <input name="name" placeholder="Full Name" onChange={handleChange} />
-          <input name="address" placeholder="Full Address" onChange={handleChange} />
-          <input name="phone" placeholder="Phone Number" onChange={handleChange} />
+          <input
+            name="address"
+            placeholder="Full Address"
+            onChange={handleChange}
+          />
+          <input
+            name="phone"
+            placeholder="Phone Number"
+            onChange={handleChange}
+          />
 
           <h3>Payment Method</h3>
 
           <div className="payment-box">
-
             <label>
-              <input type="radio" checked={payment === "upi"} onChange={() => setPayment("upi")} />
+              <input
+                type="radio"
+                checked={payment === "upi"}
+                onChange={() => setPayment("upi")}
+              />
               UPI / QR Scan
             </label>
 
             <label>
-              <input type="radio" checked={payment === "card"} onChange={() => setPayment("card")} />
+              <input
+                type="radio"
+                checked={payment === "card"}
+                onChange={() => setPayment("card")}
+              />
               Card
             </label>
 
             <label>
-              <input type="radio" checked={payment === "cod"} onChange={() => setPayment("cod")} />
+              <input
+                type="radio"
+                checked={payment === "cod"}
+                onChange={() => setPayment("cod")}
+              />
               Cash on Delivery
             </label>
-
           </div>
 
           {/* UPI QR */}
@@ -85,10 +99,7 @@ function Checkout() {
               <h4>Scan & Pay</h4>
 
               {/* 🔥 PLACEHOLDER QR (you will replace later) */}
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=UPI_PAYMENT"
-                alt="QR Code"
-              />
+              <img src={myQR} alt="UPI QR" className="upi-qr" />
 
               <p>Scan using any UPI app (PhonePe, GPay, Paytm)</p>
             </div>
@@ -105,27 +116,25 @@ function Checkout() {
 
           {/* COD */}
           {payment === "cod" && (
-            <div className="cod">
-              You will pay after delivery 🚚
-            </div>
+            <div className="cod">You will pay after delivery 🚚</div>
           )}
 
           <button className="pay-btn" onClick={handleOrder}>
-            Place Order ₹{totalPrice}
+            Place Order ₹{totalPrice.toLocaleString("en-IN")}
           </button>
-
         </div>
 
         {/* RIGHT SIDE */}
         <div className="card right">
-
           <h2>Order Summary</h2>
 
           <div className="items">
             {cart.map((item) => (
               <div className="item" key={item.id}>
                 <span>{item.name}</span>
-                <span>₹{item.price} × {item.quantity}</span>
+                <span>
+                  ₹{item.price.toLocaleString("en-IN")} × {item.quantity}
+                </span>
               </div>
             ))}
           </div>
@@ -133,11 +142,9 @@ function Checkout() {
           <hr />
 
           <div className="total">
-            <h2>Total: ₹{totalPrice}</h2>
+            <h2>Total: ₹{totalPrice.toLocaleString("en-IN")}</h2>
           </div>
-
         </div>
-
       </div>
     </div>
   );

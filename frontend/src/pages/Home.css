@@ -1,0 +1,160 @@
+/* Today's Deal Banner */
+.home-banner {
+  margin-top: 40px;
+}
+
+.banner-card {
+  background: linear-gradient(135deg, #2874f0, #0d47a1);
+  color: white;
+  border-radius: 18px;
+  padding: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+.banner-card h2 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.banner-card p {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+/* Section Heading */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  font-weight: 700;
+}
+
+/* Why Choose Us */
+.feature-card {
+  background: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  transition: .3s;
+  height: 100%;
+  font-size: 40px;
+}
+
+.feature-card h5 {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 15px;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+/* Reviews */
+.review-section {
+  background: #f8f9fa;
+  padding: 70px 0;
+}
+
+.review-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  transition: .3s;
+  height: 100%;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+}
+
+.review-card p {
+  margin: 15px 0;
+  color: #555;
+}
+
+/* Newsletter */
+.newsletter {
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 60px;
+}
+
+.newsletter h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  margin-bottom: 25px;
+}
+
+.newsletter input {
+  width: 350px;
+  max-width: 90%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.newsletter button {
+  margin-left: 10px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.newsletter button:hover {
+  background: black;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+.banner-card{
+flex-direction:column;
+text-align:center;
+padding:30px;
+}
+
+.banner-card h2{
+font-size:28px;
+}
+
+.section-heading{
+flex-direction:column;
+gap:15px;
+}
+
+.newsletter button{
+margin-left:0;
+margin-top:15px;
+width:90%;
+}
+
+.newsletter input{
+width:90%;
+}
+
+}

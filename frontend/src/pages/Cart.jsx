@@ -66,19 +66,19 @@ function Cart() {
         <div className="bill">
           <div>
             <span>Price ({cart.length} items)</span>
-            <span>₹{totalPrice}</span>
+            <span>₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
 
           <div>
             <span>Delivery Charges</span>
-            <span>₹{deliveryCharge}</span>
+            <span>₹{deliveryCharge.toLocaleString("en-IN")}</span>
           </div>
 
           <hr />
 
           <div className="total">
             <span>Total Amount</span>
-            <span>₹{finalAmount}</span>
+            <span>₹{finalAmount.toLocaleString("en-IN")}</span>
           </div>
         </div>
 

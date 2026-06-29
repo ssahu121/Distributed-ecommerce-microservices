@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class ProductService {
 
@@ -37,5 +38,23 @@ public class ProductService {
     // Search Products By Name
     public List<Product> searchProducts(String name) {
         return repository.findByNameContainingIgnoreCase(name);
+    }
+
+    // Update Product
+    public Product updateProduct(Long id, Product product) {
+
+        Product existing = repository.findById(id).orElse(null);
+
+        if (existing == null) {
+            return null;
+        }
+
+        existing.setName(product.getName());
+        existing.setDescription(product.getDescription());
+        existing.setCategory(product.getCategory());
+        existing.setPrice(product.getPrice());
+        existing.setQuantity(product.getQuantity());
+
+        return repository.save(existing);
     }
 }

@@ -1,12 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaHeart, FaSearch } from "react-icons/fa";
+
+import {
+  FaShoppingCart,
+  FaHeart,
+  FaSearch,
+  FaUserCircle,
+} from "react-icons/fa";
+
 import "./Navbar.css";
 
 import { useCart } from "../../context/CartContext";
 import { useSearch } from "../../context/SearchContext";
+import { useWishlist } from "../../context/WishlistContext";
 function Navbar() {
   const { cartCount } = useCart();
+  const { wishlist } = useWishlist();
   const { search, setSearch } = useSearch();
   return (
     <nav className="navbar navbar-expand-lg custom-navbar sticky-top">
@@ -75,11 +84,17 @@ function Navbar() {
               </Link>
             </div>
 
+            {/* Wishlist */}
+
             <li className="nav-item">
-              <Link className="nav-link icon" to="#">
-                <FaHeart />
+              <Link className="nav-link position-relative" to="/wishlist">
+                <FaHeart size={22} />
+
+                <span className="wishlist-badge">{wishlist.length}</span>
               </Link>
             </li>
+
+            {/* Cart */}
 
             <li className="nav-item">
               <Link className="nav-link position-relative" to="/cart">
@@ -87,6 +102,46 @@ function Navbar() {
 
                 <span className="cart-badge">{cartCount}</span>
               </Link>
+            </li>
+
+            {/* Profile */}
+            
+
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <FaUserCircle size={24} />
+              </a>
+
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li>
+                  <Link className="dropdown-item" to="/orders">
+                    My Orders
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="dropdown-item" to="/wishlist">
+                    Wishlist
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="dropdown-item" to="/login">
+                    Login
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="dropdown-item" to="/signup">
+                    Signup
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>

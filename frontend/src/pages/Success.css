@@ -1,12 +1,32 @@
-.success-bg {
-  min-height: 100vh;
-  background: #f1f3f6;
-  padding: 30px;
-  text-align: center;
-  font-family: Arial;
+/* 🔥 GLOBAL SAFE FIX */
+* {
+  box-sizing: border-box;
 }
 
-/* MAIN CARD */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* PAGE WRAPPER */
+.success-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f1f3f6;
+  display: flex;
+  justify-content: center;
+}
+
+/* INNER CONTAINER */
+.success-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px;
+  text-align: center;
+}
+
+/* CARD */
 .success-card {
   background: white;
   max-width: 500px;
@@ -16,6 +36,7 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* CHECK */
 .check {
   width: 60px;
   height: 60px;
@@ -25,19 +46,12 @@
   margin: auto;
   border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
-.success-card h1 {
-  font-size: 22px;
-}
-
-.success-card p {
-  color: #555;
-}
-
+/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 15px;
@@ -76,11 +90,11 @@
 
 .rec-card button {
   margin-top: 8px;
-  padding: 6px;
   width: 100%;
+  padding: 6px;
   border: none;
   background: #ff9f00;
   color: white;
-  cursor: pointer;
   border-radius: 6px;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Success.css";
+
 const recommended = [
   {
     id: 1,
@@ -23,8 +24,10 @@ const recommended = [
 ];
 
 function Success() {
-  return (
-    <div className="success-bg">
+return (
+  <div className="success-page">
+
+    <div className="success-container">
 
       <div className="success-card">
         <div className="check">✔</div>
@@ -37,7 +40,6 @@ function Success() {
         </Link>
       </div>
 
-      {/* RECOMMENDED SECTION */}
       <h2 className="rec-title">Recommended for you</h2>
 
       <div className="rec-grid">
@@ -52,7 +54,9 @@ function Success() {
       </div>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default Success;

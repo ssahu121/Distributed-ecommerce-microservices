@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaEnvelope,
   FaLock,
@@ -16,14 +16,27 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Backend API yaha connect karenge
-    alert("Login Successfully!");
+    // Admin Login
+    if (email === "admin@gmail.com" && password === "admin123") {
+      localStorage.setItem("role", "admin");
+      alert("Welcome Admin");
+      navigate("/admin");
+      return;
+    }
+
+    // Normal User Login
+    localStorage.setItem("role", "user");
+    alert("Login Successfully");
+    navigate("/");
   };
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-
         {/* LEFT SIDE */}
         <div className="auth-left">
           <h1>Welcome Back 👋</h1>
@@ -41,15 +54,11 @@ function Login() {
 
         {/* RIGHT SIDE */}
         <div className="auth-right">
-
           <h2>Login</h2>
 
-          <p className="subtitle">
-            Enter your email and password
-          </p>
+          <p className="subtitle">Enter your email and password</p>
 
           <form onSubmit={handleSubmit}>
-
             {/* Email */}
             <div className="input-box">
               <FaEnvelope className="input-icon" />
@@ -57,18 +66,21 @@ function Login() {
               <input
                 type="email"
                 placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
 
             {/* Password */}
             <div className="input-box">
-
               <FaLock className="input-icon" />
 
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
 
@@ -78,28 +90,20 @@ function Login() {
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
-
             </div>
 
             {/* Remember */}
             <div className="auth-options">
-
               <label>
                 <input type="checkbox" />
                 Remember Me
               </label>
 
-              <Link to="#">
-                Forgot Password?
-              </Link>
-
+              <Link to="#">Forgot Password?</Link>
             </div>
 
             {/* Login Button */}
-            <button className="auth-btn">
-              Login
-            </button>
-
+            <button className="auth-btn">Login</button>
           </form>
 
           {/* Divider */}
@@ -125,17 +129,10 @@ function Login() {
           {/* Signup */}
 
           <p className="bottom-text">
-
             Don't have an account?
-
-            <Link to="/signup">
-              Signup
-            </Link>
-
+            <Link to="/signup">Signup</Link>
           </p>
-
         </div>
-
       </div>
     </div>
   );
